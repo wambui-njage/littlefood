@@ -49,7 +49,7 @@ function SectionConsumption() {
           </div>
           
     
-          <Table hover>
+          <Table borderless>
       <thead>
         <tr>
           <th>#</th>
@@ -59,20 +59,19 @@ function SectionConsumption() {
         </tr>
       </thead>
       <tbody>
-        <tr>
+      <tr>
           <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
+          <td>Larry</td>
+          <td>the Bird</td>
           <td>
-           <Progress value={75} max={111} />
-            <div className="text-center">463 of 500</div>
-    
+          <Progress value={50} max="135" />
+         <div className="text-center">75 of 111</div>
           </td>
         </tr>
         <tr>
           <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
+          <td>Nova</td>
+          <td>Or Something</td>
           <td>
           <Progress value={50} max="135" />
          <div className="text-center">75 of 111</div>
@@ -80,13 +79,14 @@ function SectionConsumption() {
         </tr>
         <tr>
           <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
+          <td>Jay</td>
+          <td>Curvy Girl</td>
           <td>
-          <div className="text-center">1 of 5</div>
-          <Progress value="1" max="5" />
+          <Progress value={50} max="135" />
+         <div className="text-center">75 of 111</div>
           </td>
         </tr>
+        
       </tbody>
     </Table>
           
