@@ -39,7 +39,7 @@ function SectionMerchants() {
 
   return (
     <>
-      <div>
+      <div id="hotels">
         <Container>
           <div className="title">
             <h2 className="text-center">Resturants Near You </h2>

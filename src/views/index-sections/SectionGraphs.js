@@ -128,7 +128,7 @@ function SectionGraphs() {
 
   return (
     <>
-      <div>
+      <div id="graghs">
         <Container>
           <div className="title">
             <h2 className="text-center">Consumption Per Month </h2>

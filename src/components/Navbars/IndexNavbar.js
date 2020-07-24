@@ -30,7 +30,7 @@ import {
   Nav,
   Container
 } from "reactstrap";
-
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
@@ -68,8 +68,6 @@ function IndexNavbar() {
           <NavbarBrand
             data-placement="bottom"
             href="/index"
-            target="_blank"
-            title="Coded by Creative Tim"
           >
           Little Food
           </NavbarBrand>
@@ -91,40 +89,21 @@ function IndexNavbar() {
           isOpen={navbarCollapse}
         >
           <Nav navbar>
+
+             
             
             <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="index/#/section1"
-         
-                title="Like us on Facebook"
-              >
-                <i className="fa fa-facebook-square" />
-                <p className="d-lg-none">Facebook</p>
-              </NavLink>
+            <AnchorLink offset='100' className="nav-link" href='#graghs'>graghs</AnchorLink>
             </NavItem>
+
             <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-                target="_blank"
-                title="Follow us on Instagram"
-              >
-                <i className="fa fa-instagram" />
-                <p className="d-lg-none">Instagram</p>
-              </NavLink>
+            <AnchorLink offset='100' className="nav-link" href='#hotels'>resturants</AnchorLink>
             </NavItem>
+
             <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://www.github.com/CreativeTimOfficial/paper-kit-react?ref=creativetim"
-                target="_blank"
-                title="Star on GitHub"
-              >
-                <i className="fa fa-github" />
-                <p className="d-lg-none">GitHub</p>
-              </NavLink>
+            <AnchorLink offset='100' className="nav-link" href='#graghs'>graghs</AnchorLink>
             </NavItem>
+          
            
           
           </Nav>
