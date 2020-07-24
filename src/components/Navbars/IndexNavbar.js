@@ -28,7 +28,11 @@ import {
   NavItem,
   NavLink,
   Nav,
-  Container
+  Container,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from "reactstrap";
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 function IndexNavbar() {
@@ -103,7 +107,23 @@ function IndexNavbar() {
             <NavItem>
             <AnchorLink offset='100' className="nav-link" href='#graghs'>graghs</AnchorLink>
             </NavItem>
-          
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Options
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>
+                  Option 1
+                </DropdownItem>
+                <DropdownItem>
+                <AnchorLink  offset='100' href='#graghs'>Graghs</AnchorLink>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                  Reset
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
            
           
           </Nav>
