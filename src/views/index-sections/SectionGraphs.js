@@ -111,7 +111,7 @@ function SectionGraphs() {
                 
                 },
                 title: {
-                  text: 'Monthly Inflation in Argentina, 2002',
+                  text: 'Monthly Food Consumption',
                   floating: true,
                   offsetY: 330,
                   align: 'center',

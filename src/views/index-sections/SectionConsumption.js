@@ -62,7 +62,7 @@ function SectionConsumption() {
       <tr>
           <th scope="row">1</th>
           <td>Larry</td>
-          <td>the Bird</td>
+          <td>Page</td>
           <td>
           <Progress value={50} max="135" />
          <div className="text-center">75 of 111</div>
@@ -71,7 +71,7 @@ function SectionConsumption() {
         <tr>
           <th scope="row">2</th>
           <td>Nova</td>
-          <td>Or Something</td>
+          <td>Taylor</td>
           <td>
           <Progress value={50} max="135" />
          <div className="text-center">75 of 111</div>
@@ -80,7 +80,7 @@ function SectionConsumption() {
         <tr>
           <th scope="row">3</th>
           <td>Jay</td>
-          <td>Curvy Girl</td>
+          <td>Paters</td>
           <td>
           <Progress value={50} max="135" />
          <div className="text-center">75 of 111</div>
