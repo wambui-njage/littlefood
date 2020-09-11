@@ -47,7 +47,7 @@ function IndexHeader() {
               </div> */}
             </div>
             <h2 className="presentation-subtitle text-center">
-              Food for thought
+            Loosen up a little.
             </h2>
           </Container>
         </div>

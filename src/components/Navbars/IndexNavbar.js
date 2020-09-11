@@ -16,7 +16,8 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React  from "react";
+import { Link } from "react-router-dom";
 // nodejs library that concatenates strings
 import classnames from "classnames";
 // reactstrap components
@@ -33,11 +34,13 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Dropdown
 } from "reactstrap";
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
+  const [openMenu,setOpenMenu] = React.useState(false);
 
   const toggleNavbarCollapse = () => {
     setNavbarCollapse(!navbarCollapse);
@@ -107,8 +110,19 @@ function IndexNavbar() {
             <NavItem>
             <AnchorLink offset='100' className="nav-link" href='#graghs'>graghs</AnchorLink>
             </NavItem>
+            <NavItem>
+            <NavLink to="/profile-page" tag={Link}>
+                <i className="nc-icon nc-layout-11" /> Outside
+              </NavLink>
+            </NavItem>
+            
             <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
+
+
+              <Dropdown isOpen={openMenu} 
+              onMouseEnter={() => setOpenMenu(true)}
+              onMouseLeave={() => setOpenMenu(false)}>
+              <DropdownToggle nav caret >
                 Options
               </DropdownToggle>
               <DropdownMenu right>
@@ -123,7 +137,10 @@ function IndexNavbar() {
                   Reset
                 </DropdownItem>
               </DropdownMenu>
+              </Dropdown>
             </UncontrolledDropdown>
+
+            
            
           
           </Nav>
