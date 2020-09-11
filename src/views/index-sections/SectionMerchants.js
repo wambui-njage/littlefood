@@ -51,7 +51,7 @@ function SectionMerchants() {
           <CardTitle><b>Java House</b></CardTitle>
           <CardSubtitle>0.8 KM Away</CardSubtitle>
           <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-          <Button>Button</Button>
+          <Button>View Menu</Button>
         </CardBody>
       </Card>
     
@@ -61,7 +61,7 @@ function SectionMerchants() {
           <CardTitle><b>ArtCaffe</b></CardTitle>
           <CardSubtitle>2.4 KM Away</CardSubtitle>
           <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-          <Button>Button</Button>
+          <Button>View Menu</Button>
         </CardBody>
       </Card>
       <Card>
@@ -70,7 +70,7 @@ function SectionMerchants() {
           <CardTitle><b>CJs</b></CardTitle>
           <CardSubtitle>2.8 KM Away</CardSubtitle>
           <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-          <Button>Button</Button>
+          <Button>View Menu</Button>
         </CardBody>
       </Card>
     </CardDeck>
