@@ -39,7 +39,9 @@ import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
-function ProfilePage() {
+function ProfilePage(props) {
+
+  const hotel = props.location.hotel
   const [activeTab, setActiveTab] = React.useState("1");
 
   const toggle = (tab) => {
@@ -50,6 +52,7 @@ function ProfilePage() {
 
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
+    //  window.scrollTo(0, 0);
     document.body.classList.add("landing-page");
     return function cleanup() {
       document.body.classList.remove("landing-page");
@@ -60,34 +63,43 @@ function ProfilePage() {
       <ExamplesNavbar />
       <ProfilePageHeader />
       <div className="section profile-content">
-        <Container>
+      <Container  style={hotel ? {display: 'none'} : {  }}>
           <div className="owner">
-            <div className="avatar">
+            
+            <div className="name">
+              <h4 className="title mt-2">
+             Error 404 Resturant Not Found<br />
+              </h4>
+             
+         
               <img
-                alt="..."
-                className="img-circle img-no-padding img-responsive"
-                src={require("assets/img/faces/joe-gardner-2.jpg")}
+                alt="..." width="200px" height="190px"
+                className="mb-4 img-circle img-no-padding img-responsive"
+                src={require("assets/img/avocado.gif")}
               />
+
+               <h6 className="description">NOTHING TO SEE HERE 😬 ... KEEP WALKING </h6>
+        
             </div>
+          </div>
+      </Container>
+        <Container style={hotel ? {} : { display: 'none' }}>
+          <div className="owner">
+            
             <div className="name">
               <h4 className="title">
-                Jane Faker <br />
+             Java House<br />
               </h4>
-              <h6 className="description">Music Producer</h6>
+              <h6 className="description">Coffee House</h6>
             </div>
           </div>
           <Row>
             <Col className="ml-auto mr-auto text-center" md="6">
               <p>
-                An artist of considerable range, Jane Faker — the name taken by
-                Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
-                and records all of his own music, giving it a warm, intimate
-                feel with a solid groove structure.
+                Java House is a chain of coffee houses with its head office at ABC Place in Nairobi, Kenya, founded in 1999 by Kevin Ashley and Jon Wagner.
               </p>
               <br />
-              <Button className="btn-round" color="default" outline>
-                <i className="fa fa-cog" /> Settings
-              </Button>
+            
             </Col>
           </Row>
           <br />
@@ -101,7 +113,7 @@ function ProfilePage() {
                       toggle("1");
                     }}
                   >
-                    Follows
+                    Starters
                   </NavLink>
                 </NavItem>
                 <NavItem>
@@ -111,7 +123,7 @@ function ProfilePage() {
                       toggle("2");
                     }}
                   >
-                    Following
+                    Main Course
                   </NavLink>
                 </NavItem>
               </Nav>
@@ -119,7 +131,7 @@ function ProfilePage() {
           </div>
           {/* Tab panes */}
           <TabContent className="following" activeTab={activeTab}>
-            <TabPane tabId="1" id="follows">
+            <TabPane className="text-center" tabId="1" id="follows">
               <Row>
                 <Col className="ml-auto mr-auto" md="6">
                   <ul className="list-unstyled follows">
@@ -129,64 +141,63 @@ function ProfilePage() {
                           <img
                             alt="..."
                             className="img-circle img-no-padding img-responsive"
-                            src={require("assets/img/faces/clem-onojeghuo-2.jpg")}
+                            src={require("assets/img/artcaffe.jpg")}
                           />
                         </Col>
                         <Col className="ml-auto mr-auto" lg="7" md="4" xs="4">
                           <h6>
-                            Flume <br />
-                            <small>Musical Producer</small>
+                            Grill Fish Fillet <br />
+                            <small>Served with salad or french fries</small>
                           </h6>
                         </Col>
                         <Col className="ml-auto mr-auto" lg="3" md="4" xs="4">
-                          <FormGroup check>
-                            <Label check>
-                              <Input
-                                defaultChecked
-                                defaultValue=""
-                                type="checkbox"
-                              />
-                              <span className="form-check-sign" />
-                            </Label>
-                          </FormGroup>
+
+                        <h6>
+                            KSH 1200
+                          </h6>
+                          
                         </Col>
                       </Row>
                     </li>
                     <hr />
-                    <li>
-                      <Row>
-                        <Col className="mx-auto" lg="2" md="4" xs="4">
-                          <img
-                            alt="..."
-                            className="img-circle img-no-padding img-responsive"
-                            src={require("assets/img/faces/ayo-ogunseinde-2.jpg")}
-                          />
-                        </Col>
-                        <Col lg="7" md="4" xs="4">
-                          <h6>
-                            Banks <br />
-                            <small>Singer</small>
-                          </h6>
-                        </Col>
-                        <Col lg="3" md="4" xs="4">
-                          <FormGroup check>
-                            <Label check>
-                              <Input defaultValue="" type="checkbox" />
-                              <span className="form-check-sign" />
-                            </Label>
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                    </li>
+                   
                   </ul>
                 </Col>
               </Row>
             </TabPane>
-            <TabPane className="text-center" tabId="2" id="following">
-              <h3 className="text-muted">Not following anyone yet :(</h3>
-              <Button className="btn-round" color="warning">
-                Find artists
-              </Button>
+          <TabPane className="text-center" tabId="2" id="following">
+              <Row>
+                <Col className="ml-auto mr-auto" md="6">
+                  <ul className="list-unstyled follows">
+                    <li>
+                      <Row>
+                        <Col className="ml-auto mr-auto" lg="2" md="4" xs="4">
+                          <img
+                            alt="..."
+                            className="img-circle img-no-padding img-responsive"
+                            src={require("assets/img/artcaffe.jpg")}
+                          />
+                        </Col>
+                        <Col className="ml-auto mr-auto" lg="7" md="4" xs="4">
+                          <h6>
+                            Grill Fish Fillet <br />
+                            <small>Served with salad or french fries</small>
+                          </h6>
+                        </Col>
+                        <Col className="ml-auto mr-auto" lg="3" md="4" xs="4">
+
+                        <h6>
+                            KSH 1200
+                          </h6>
+                          
+                        </Col>
+                      </Row>
+                    </li>
+                    <hr />
+                   
+                  </ul>
+                </Col>
+              </Row>
             </TabPane>
           </TabContent>
         </Container>

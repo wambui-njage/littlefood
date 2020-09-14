@@ -48,6 +48,7 @@ ReactDOM.render(
         path="/profile-page"
         render={(props) => <ProfilePage {...props} />}
       />
+      
       <Route
         path="/register-page"
         render={(props) => <RegisterPage {...props} />}
