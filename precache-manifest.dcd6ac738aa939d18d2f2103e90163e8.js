@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7f08f812839b88c368af8cd1076e9040",
+    "revision": "9aaaaf51d96f53f3798884c46a248684",
     "url": "/littlefood/index.html"
   },
   {
-    "revision": "f14aa4da7449aee1837b",
-    "url": "/littlefood/static/css/main.ee8edbf7.chunk.css"
+    "revision": "c35811735804a8837bfa",
+    "url": "/littlefood/static/css/main.099ccc29.chunk.css"
   },
   {
-    "revision": "749ac1b58803f64a2308",
-    "url": "/littlefood/static/js/2.f667f52d.chunk.js"
+    "revision": "9b7c14317b7fc4717c80",
+    "url": "/littlefood/static/js/2.22d64912.chunk.js"
   },
   {
     "revision": "75cc915e055b928bdc356ac9d077c8a7",
-    "url": "/littlefood/static/js/2.f667f52d.chunk.js.LICENSE.txt"
+    "url": "/littlefood/static/js/2.22d64912.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f14aa4da7449aee1837b",
-    "url": "/littlefood/static/js/main.1d2ad3e9.chunk.js"
+    "revision": "c35811735804a8837bfa",
+    "url": "/littlefood/static/js/main.1e5fd58c.chunk.js"
   },
   {
     "revision": "30f942bb7783c4b076a0017ec0876fab",
-    "url": "/littlefood/static/js/main.1d2ad3e9.chunk.js.LICENSE.txt"
+    "url": "/littlefood/static/js/main.1e5fd58c.chunk.js.LICENSE.txt"
   },
   {
     "revision": "776b3d1ccb657393d70e",
@@ -36,16 +36,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/littlefood/static/media/artcaffe.6e6b6770.jpg"
   },
   {
-    "revision": "bfc688ca490f0079051aea5b8ec75cbe",
-    "url": "/littlefood/static/media/ayo-ogunseinde-2.bfc688ca.jpg"
+    "revision": "8da5763ea2c19b2cfa0046f0a51e086c",
+    "url": "/littlefood/static/media/avocado.8da5763e.gif"
   },
   {
     "revision": "8b3d07ae74bc237d636cf5a293896aeb",
     "url": "/littlefood/static/media/cjs.8b3d07ae.jpg"
-  },
-  {
-    "revision": "bb4b9ac9fd07e48f86c719495b65341c",
-    "url": "/littlefood/static/media/clem-onojeghuo-2.bb4b9ac9.jpg"
   },
   {
     "revision": "ae11d928aae96245020bb59a1910f758",
@@ -60,8 +56,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/littlefood/static/media/erik-lucatero-2.2051e0e8.jpg"
   },
   {
-    "revision": "f26c34bb88eb83d5aae99c7dbf3ddd48",
-    "url": "/littlefood/static/media/fabio-mangione.f26c34bb.jpg"
+    "revision": "b78c3bc506bfcb5575cff7091e98b823",
+    "url": "/littlefood/static/media/food.b78c3bc5.jpg"
   },
   {
     "revision": "9318252a7425d3fc93a9af15ccdcba3c",
