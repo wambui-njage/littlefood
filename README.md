@@ -112,13 +112,13 @@ paper-kit-react
     │       └── paper-kit.scss
     ├── components
     │   ├── Footers
-    │   │   └── DemoFooter.js
+    │   │   └── Footer.js
     │   ├── Headers
     │   │   ├── IndexHeader.js
     │   │   ├── LandingPageHeader.js
-    │   │   └── ProfilePageHeader.js
+    │   │   └── PageHeader.js
     │   └── Navbars
-    │       ├── ExamplesNavbar.js
+    │       ├── Navbar.js
     │       └── IndexNavbar.js
     └── views
         ├── Index.js

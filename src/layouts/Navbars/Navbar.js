@@ -32,7 +32,7 @@ import {
   Container,
 } from "reactstrap";
 
-function ExamplesNavbar() {
+function MainNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
 
@@ -110,28 +110,7 @@ function ExamplesNavbar() {
                 <i className="nc-icon nc-book-bookmark" /> Documentation
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://twitter.com/CreativeTim?ref=creativetim"
-                target="_blank"
-                title="Follow us on Twitter"
-              >
-                <i className="fa fa-twitter" />
-                <p className="d-lg-none">Twitter</p>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://www.facebook.com/CreativeTim?ref=creativetim"
-                target="_blank"
-                title="Like us on Facebook"
-              >
-                <i className="fa fa-facebook-square" />
-                <p className="d-lg-none">Facebook</p>
-              </NavLink>
-            </NavItem>
+          
             <NavItem>
               <NavLink
                 data-placement="bottom"
@@ -143,17 +122,7 @@ function ExamplesNavbar() {
                 <p className="d-lg-none">Instagram</p>
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://www.github.com/CreativeTimOfficial?ref=creativetim"
-                target="_blank"
-                title="Star on GitHub"
-              >
-                <i className="fa fa-github" />
-                <p className="d-lg-none">GitHub</p>
-              </NavLink>
-            </NavItem>
+           
           </Nav>
         </Collapse>
       </Container>
@@ -161,4 +130,4 @@ function ExamplesNavbar() {
   );
 }
 
-export default ExamplesNavbar;
+export default MainNavbar;

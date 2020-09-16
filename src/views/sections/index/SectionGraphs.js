@@ -16,22 +16,15 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React,{useState} from "react";
+import React,{ useState } from "react";
 // react plugin used to create switch buttons
-import Switch from "react-bootstrap-switch";
-// plugin that creates slider
-import Slider from "nouislider";
+
 
 // reactstrap components
 import {
     Container,
     Card, 
-    Button,
-    CardImg, 
-    CardTitle, 
-    CardText,
     CardDeck,
-    CardSubtitle, 
     CardBody
 } from "reactstrap";
 import Chart from "react-apexcharts";

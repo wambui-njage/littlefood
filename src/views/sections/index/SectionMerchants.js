@@ -17,18 +17,12 @@
 
 */
 import React from "react";
-// react plugin used to create switch buttons
-import Switch from "react-bootstrap-switch";
-// plugin that creates slider
-import Slider from "nouislider";
-import { Link,Route } from "react-router-dom";
 
-import ProfilePage from "../examples/ProfilePage";
+import { Link } from "react-router-dom";
+
 // reactstrap components
 import {
-    NavItem,
-    NavLink,
-    Nav,
+
     Container,
     Card, 
     Button,
@@ -66,10 +60,10 @@ function SectionMerchants() {
           <CardTitle><b>ArtCaffe</b></CardTitle>
           <CardSubtitle>2.4 KM Away</CardSubtitle>
           <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-            <Link className="btn btn-secondary" to={{pathname:"/profile-page" , hotel:{name:"Java House",description:"Coffe House"}}} >
+            <Link className="btn btn-secondary" to={{pathname:"/restaurant/2" , hotel:{name:"Java House",description:"Coffe House"}}} >
                  View Menu
             </Link>
-            <Route exact path='profile-page' component={ProfilePage}/>
+       
         </CardBody>
       </Card>
       <Card>

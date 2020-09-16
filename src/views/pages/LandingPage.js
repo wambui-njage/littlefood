@@ -36,9 +36,9 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import LandingPageHeader from "components/Headers/LandingPageHeader.js";
-import DemoFooter from "components/Footers/DemoFooter.js";
+import NavBar from "layouts/Navbars/NavBar.js";
+import LandingPageHeader from "layouts/Headers/LandingPageHeader.js";
+import Footer from "layouts/Footers/Footer.js";
 
 function LandingPage() {
   document.documentElement.classList.remove("nav-open");
@@ -50,7 +50,7 @@ function LandingPage() {
   });
   return (
     <>
-      <ExamplesNavbar />
+      <NavBar />
       <LandingPageHeader />
       <div className="main">
         <div className="section text-center">
@@ -361,7 +361,7 @@ function LandingPage() {
           </Container>
         </div>
       </div>
-      <DemoFooter />
+      <Footer />
     </>
   );
 }

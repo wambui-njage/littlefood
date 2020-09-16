@@ -22,7 +22,7 @@ import React from "react";
 import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+import Navbar from "layouts/Navbars/Navbar.js";
 
 function RegisterPage() {
   document.documentElement.classList.remove("nav-open");
@@ -34,7 +34,7 @@ function RegisterPage() {
   });
   return (
     <>
-      <ExamplesNavbar />
+      <Navbar />
       <div
         className="page-header"
         style={{
@@ -99,7 +99,7 @@ function RegisterPage() {
         <div className="footer register-footer text-center">
           <h6>
             © {new Date().getFullYear()}, made with{" "}
-            <i className="fa fa-heart heart" /> by Creative Tim
+            <i className="fa fa-heart heart" /> 
           </h6>
         </div>
       </div>
