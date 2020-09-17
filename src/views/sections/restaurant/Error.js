@@ -1,18 +1,21 @@
-import React from "react";
+import React ,{ useContext }from "react";
+import RestaurantContext from "../../context/Restaurant";
 
 // reactstrap components
 import {
     Container
 } from "reactstrap";
-const Error = (props) => {
+const Error = () => {
+  const { error } = useContext(RestaurantContext)
+ 
     return ( <>
     
-    <Container  style={props.hotel ? {display: 'none'} : {  }}>
+    <Container  style={ error.length === 0  ? {display: 'none'} : { }}>
           <div className="owner">
             
             <div className="name">
-              <h4 className="title mt-2">
-             Error 404 Resturant Not Found<br />
+              <h4 className="title mt-2"> { error.length ? error : "Error 404 Resturant Not Found"}
+             <br />
               </h4>
              
          

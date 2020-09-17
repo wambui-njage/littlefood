@@ -1,6 +1,6 @@
 
-import React ,{ useState}from "react";
-
+import React ,{ useState , useContext}from "react";
+import RestaurantContext from "../../context/Restaurant"
 // reactstrap components
 import {
   NavItem,
@@ -13,6 +13,8 @@ import {
 } from "reactstrap";
 
 const Menu = () => {
+
+  const hotel = useContext(RestaurantContext)
 
   const [activeTab, setActiveTab] = useState("1");
 

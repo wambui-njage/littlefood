@@ -1,21 +1,22 @@
-import React from "react";
-
+import React ,{ useContext }from "react";
+import RestaurantContext from "../../context/Restaurant";
 // reactstrap components
 import {
   Row,
   Col,
 } from "reactstrap";
 
-const HotelDescription = (props) => {
+const RestaurantDescription = () => {
 
-    console.log(props)
+  const  { hotel } = useContext(RestaurantContext);
+   
     return ( <>
 
-<div className="owner">
+      <div className="owner">
             
             <div className="name">
               <h4 className="title">
-             Java House<br />
+             {hotel.title}<br />
               </h4>
               <h6 className="description">Coffee House</h6>
             </div>
@@ -34,4 +35,4 @@ const HotelDescription = (props) => {
     </> );
 }
  
-export default HotelDescription;
+export default RestaurantDescription;
