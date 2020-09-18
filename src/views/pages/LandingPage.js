@@ -36,9 +36,9 @@ import {
 } from "reactstrap";
 
 // core components
-import NavBar from "layouts/Navbars/NavBar.js";
-import LandingPageHeader from "layouts/Headers/LandingPageHeader.js";
-import Footer from "layouts/Footers/Footer.js";
+import NavBar from "../../layouts/Navbars/Navbar.js";
+import LandingPageHeader from "../../layouts/Headers/LandingPageHeader";
+import Footer from "../../layouts/Footers/Footer.js";
 
 function LandingPage() {
   document.documentElement.classList.remove("nav-open");
@@ -361,7 +361,7 @@ function LandingPage() {
           </Container>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

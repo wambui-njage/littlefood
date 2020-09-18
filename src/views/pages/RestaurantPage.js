@@ -67,15 +67,19 @@ function RestaurantPage(props) {
     const fetchHotel = async () => {
 
       const result = await axios(
-        `https://jsonplaceholder.typicode.com/posts/${state.id}`,
-      ).then(result => {    
+        `http://localhost:5000/restaurant/${state.id}`,
+      ).then(result => { 
+        
+        setTimeout(() => { dispatch({type:'SUCCESS',payload:result.data}); }, 3000);
 
-        dispatch({type:'SUCCESS',payload:result.data});
+     
         
 			})
 			.catch(error => {
 
-        dispatch({ type: 'ERROR' })
+        setTimeout(() => { dispatch({ type: 'ERROR' }); }, 3000);
+
+        
 				
 			})
 
@@ -98,7 +102,7 @@ function RestaurantPage(props) {
       <PageHeader/>
       <RestaurantContext.Provider value={state} >
       {state.loading && <Loading /> }
-      <Error />
+      {state.error && <Error /> }
       
       {
        Object.keys(state.hotel).length > 0 && <Container >

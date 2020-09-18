@@ -27,7 +27,7 @@ import "assets/demo/demo.css?v=1.2.0";
 // pages
 import Index from "views/pages/Index.js";
 // import NucleoIcons from "views/NucleoIcons.js";
-// import LandingPage from "views/examples/LandingPage.js";
+import LandingPage from "views/pages/LandingPage.js";
 import RestaurantPage from "views/pages/RestaurantPage.js";
 // import RegisterPage from "views/examples/RegisterPage.js";
 // others
@@ -46,15 +46,17 @@ ReactDOM.render(
         path="/nucleo-icons"
         render={(props) => <NucleoIcons {...props} />}
       />
-      <Route
-        path="/landing-page"
-        render={(props) => <LandingPage {...props} />}
-      />
+      
       
       <Route
         path="/register-page"
         render={(props) => <RegisterPage {...props} />}
       /> */}
+
+<Route
+        path="/landing-page"
+        render={(props) => <LandingPage {...props} />}
+      />
       <Redirect to="/index" />
     </Switch>
   </BrowserRouter>,

@@ -10,7 +10,7 @@ const Error = () => {
  
     return ( <>
     
-    <Container  style={ error.length === 0  ? {display: 'none'} : { }}>
+    <Container >
           <div className="owner">
             
             <div className="name">

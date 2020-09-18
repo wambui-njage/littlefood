@@ -16,9 +16,9 @@ const RestaurantDescription = () => {
             
             <div className="name">
               <h4 className="title">
-             {hotel.title}<br />
+             {hotel.RestaurantName}<br />
               </h4>
-              <h6 className="description">Coffee House</h6>
+              <h6 className="description">{hotel.TypeOfRestaurant}</h6>
             </div>
             <Row>
             <Col className="ml-auto mr-auto text-center" md="6">
