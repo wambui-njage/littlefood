@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Sequelize = require("sequelize");
-const { Restaurant } = require("../config/db");
+const { Restaurant , RestaurantMenu } = require("../config/db");
 
 
 router.get('/', async (req, res) => {
@@ -29,6 +29,32 @@ router.get('/:id', async (req, res) => {
     if(!hotels)  return res.status(404).json({});
 
     return res.status(200).json(hotels);
+    
+  } catch (error) {
+
+    console.log(error)
+
+    return res.status(500).json({});
+    
+  }
+
+    
+});
+
+router.get('/menu/:id', async (req, res) => {
+
+  try {
+
+    const menu = await RestaurantMenu.findAll({ 
+      where: { RestaurantID:req.params.id },
+      order: [
+        ['OriginalPrice', 'ASC'],
+      ]
+     });
+
+    if(!menu)  return res.status(404).json({});
+
+    return res.status(200).json(menu);
     
   } catch (error) {
 

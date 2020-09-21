@@ -15,19 +15,19 @@ const RestaurantDescription = () => {
       <div className="owner">
             
             <div className="name">
-              <h4 className="title">
+              <h4 className="title font-weight-bold text-muted">
              {hotel.RestaurantName}<br />
               </h4>
-              <h6 className="description">{hotel.TypeOfRestaurant}</h6>
+              <p >Here is the wonderful menu { hotel.RestaurantName.toLocaleLowerCase() } have crafted for you </p>
             </div>
             <Row>
-            <Col className="ml-auto mr-auto text-center" md="6">
+            {/* <Col className="ml-auto mr-auto text-center" md="6">
               <p>
-                Java House is a chain of coffee houses with its head office at ABC Place in Nairobi, Kenya, founded in 1999 by Kevin Ashley and Jon Wagner.
+                Here is the wonderful menu {hotel.RestaurantName} has crafted just for you 
               </p>
               <br />
             
-            </Col>
+            </Col> */}
           </Row>
           <br />
           </div>

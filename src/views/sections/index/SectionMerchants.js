@@ -1,5 +1,7 @@
 import React, { useEffect ,useState } from "react";
 import { Link } from "react-router-dom";
+import useFetch from "../../../hooks/fetch";
+import axios from "axios";
 // reactstrap compnents
 import {
     Container,
@@ -7,21 +9,33 @@ import {
     CardImg, 
     CardTitle, 
     CardText,
-    CardDeck,
-    CardSubtitle, 
+    CardDeck, 
     CardBody
 } from "reactstrap";
 
 
-function SectionMerchants(props) {
+function SectionMerchants() {
 
   const [restaurants ,setRestaurants] = useState([]);
 
+  
+  const { response, isLoading } = useFetch({
+    api: axios,
+    method: "get",
+    url: "http://localhost:5000/restaurant"
+ });
+
+
   useEffect(() =>{
+
+    if (response) {
+
+      setRestaurants(response)
+    }
  
-    setRestaurants(props.restaurants)
     
-  },[props])
+    
+  },[response])
 
   return (
     <>

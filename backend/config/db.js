@@ -1,6 +1,7 @@
 require("dotenv").config();
 const Sequelize = require("sequelize");
 const RestaurantModel = require("../models/restaurant");
+const RestaurantMenuModel = require("../models/restaurantmenu");
 
 
 const sequelize = new Sequelize(
@@ -40,7 +41,9 @@ sequelize
 
 
 const Restaurant = RestaurantModel(sequelize, Sequelize);
+const RestaurantMenu = RestaurantMenuModel(sequelize, Sequelize);
 
 module.exports = {
-  Restaurant
+  Restaurant,
+  RestaurantMenu
 };

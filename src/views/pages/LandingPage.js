@@ -38,7 +38,7 @@ import {
 // core components
 import NavBar from "../../layouts/Navbars/Navbar.js";
 import LandingPageHeader from "../../layouts/Headers/LandingPageHeader";
-import Footer from "../../layouts/Footers/Footer.js";
+
 
 function LandingPage() {
   document.documentElement.classList.remove("nav-open");
