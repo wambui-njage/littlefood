@@ -4,7 +4,7 @@
 }
 .fade-appear.fade-appear-active {
   opacity: 1;
-  transition: opacity 700ms linear 700ms;
+  transition: opacity 500ms linear 500ms;
 }
 
 /* enter */
@@ -14,12 +14,11 @@
 }
 .fade-enter.fade-enter-active {
     opacity: 1;
-    transition: opacity 700ms linear 700ms;
+    transition: opacity 500ms linear 500ms;
 }
 .loading .loading-shimmer {
-
+    
     border-radius: 50% !important;
-
     height: 40px !important;
     width: 40px !important;
 }

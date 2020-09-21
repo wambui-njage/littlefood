@@ -106,16 +106,16 @@ function IndexNavbar() {
             <AnchorLink offset='100' className="nav-link" href='#hotels'>resturants</AnchorLink>
             </NavItem>
 
-            <NavItem>
+            {/* <NavItem>
             <AnchorLink offset='100' className="nav-link" href='#graghs'>graghs</AnchorLink>
-            </NavItem>
-            <NavItem>
+            </NavItem> */}
+            {/* <NavItem>
             <NavLink to="/profile-page" tag={Link}>
                 <i className="nc-icon nc-layout-11" /> Outside
               </NavLink>
-            </NavItem>
+            </NavItem> */}
             
-            <UncontrolledDropdown nav inNavbar>
+            {/* <UncontrolledDropdown nav inNavbar>
 
 
               <Dropdown isOpen={openMenu} 
@@ -137,7 +137,7 @@ function IndexNavbar() {
                 </DropdownItem>
               </DropdownMenu>
               </Dropdown>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown> */}
 
             
            

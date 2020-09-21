@@ -73,8 +73,6 @@ function MainNavbar() {
           <NavbarBrand
             data-placement="bottom"
             to="/index"
-            target="_blank"
-            title="Coded by Creative Tim"
             tag={Link}
           >
             LITTLE FOOD
