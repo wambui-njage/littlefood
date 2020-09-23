@@ -1,7 +1,10 @@
-import React, { useEffect ,useState } from "react";
+import React, { useEffect , useState } from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../../../hooks/fetch";
 import axios from "axios";
+import Loading from "../restaurant/Loading";
+import Error from "../restaurant/Error.js";
+import { CSSTransition } from 'react-transition-group';
 // reactstrap compnents
 import {
     Container,
@@ -17,17 +20,17 @@ import {
 function SectionMerchants() {
 
   const [restaurants ,setRestaurants] = useState([]);
-
   
-  const { response, isLoading } = useFetch({
-    api: axios,
-    method: "get",
-    url: "http://localhost:5000/restaurant"
- });
+    const { response, isLoading , error} = useFetch({
+      api: axios,
+      method: "get",
+      url: "http://localhost:5000/restaurant"
+   });
 
-
+//  console.log(response, isLoading , error)
   useEffect(() =>{
 
+  
     if (response) {
 
       setRestaurants(response)
@@ -39,14 +42,22 @@ function SectionMerchants() {
 
   return (
     <>
-      <div id="hotels">
+    
+    <CSSTransition
+            in={!isLoading}
+            appear={true}
+            timeout={1000}
+            classNames="fade"
+            >
+    {  <div id="hotels">
         <Container>
           <div className="title">
             <h2 className="text-center">Resturants Near You </h2>
           </div>
+          { isLoading &&  <Loading/> }
           <CardDeck>
 
-          
+          { error && <Error error={error} /> }
               { Object.entries(restaurants).map((value, index) => { return  <Card key={value[1].RestaurantID}>
                 
                 <CardImg top width="100%" style={{height:"-webkit-fill-available"}} src={value[1].Image} alt="Card image cap" />
@@ -66,8 +77,11 @@ function SectionMerchants() {
   
         </Container>
       </div>
+    
+}
+</CSSTransition>
     </>
   );
 }
 
-export default SectionMerchants;
+export default React.memo( SectionMerchants );

@@ -5618,7 +5618,7 @@ License - nucleoapp.com/license/
     position: relative;
     z-index: 1; }
   .register-page .page-header .container {
-    margin-top: 150px; } }
+    margin-top: 0px; } }
 
 @media (max-width: 1023px) and (min-width: 767px) {
   .presentation-page .section-content .image-container .area-img {
@@ -5659,7 +5659,7 @@ License - nucleoapp.com/license/
   .presentation-page .section-cards .codrops-header .description {
     max-width: 220px; }
   .register-page .page-header .container .info:first-of-type {
-    margin-top: 50px; } }
+    margin-top: 0px; } }
 
 @media screen and (max-width: 1367px) {
   .presentation-page .section-cards,
@@ -6410,7 +6410,7 @@ td.rdtYear:hover {
       nav[aria-label="pagination"] .pagination .page-item {
         margin-bottom: 5px; }
   .register-page .page-header .container {
-    margin-top: 7rem !important; } }
+    margin-top: 0rem !important; } }
 
 .popover {
   box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.2);

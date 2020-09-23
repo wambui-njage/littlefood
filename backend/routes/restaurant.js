@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
     return res.status(200).json(hotels);
     
   } catch (error) {
-
-    return res.status(500).json({});
+  
+    return res.status(500).json({error:"server error"});
     
   }
 
@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
 
     const hotels = await Restaurant.findOne({ where: { RestaurantID:req.params.id } });
 
-    if(!hotels)  return res.status(404).json({});
+    if(!hotels)  return res.status(404).json({error:"not found"});
 
     return res.status(200).json(hotels);
     
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
 
     console.log(error)
 
-    return res.status(500).json({});
+    return res.status(500).json({error:"server error"});
     
   }
 

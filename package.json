@@ -1,6 +1,6 @@
 {
   "homepage": "https://wambui-njage.github.io/littlefood",
-  "name": "paper-kit-react",
+  "name": "little-corporate-food",
   "version": "1.2.0",
   "private": true,
   "dependencies": {
@@ -32,6 +32,7 @@
     "react-scripts": "3.4.1",
     "react-scroll": "^1.8.0",
     "react-shimmer": "^3.1.1",
+    "react-sparkle": "^1.0.6",
     "react-transition-group": "^4.4.1",
     "reactstrap": "8.4.1",
     "sequelize": "^6.3.5",

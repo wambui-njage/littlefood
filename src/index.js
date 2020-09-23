@@ -29,7 +29,7 @@ import Index from "views/pages/Index.js";
 // import NucleoIcons from "views/NucleoIcons.js";
 import LandingPage from "views/pages/LandingPage.js";
 import RestaurantPage from "views/pages/RestaurantPage.js";
-// import RegisterPage from "views/examples/RegisterPage.js";
+import LoginPage from "views/pages/LoginPage.js";
 // others
 
 ReactDOM.render(
@@ -45,13 +45,13 @@ ReactDOM.render(
 {/* <Route
         path="/nucleo-icons"
         render={(props) => <NucleoIcons {...props} />}
-      />
+      /> */}
       
       
       <Route
         path="/register-page"
-        render={(props) => <RegisterPage {...props} />}
-      /> */}
+        render={(props) => <LoginPage {...props} />}
+      />
 
 <Route
         path="/landing-page"

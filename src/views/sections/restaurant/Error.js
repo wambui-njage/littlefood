@@ -1,12 +1,12 @@
 import React ,{ useContext }from "react";
-import RestaurantContext from "../../context/Restaurant";
+// import RestaurantContext from "../../context/Restaurant";
 
 // reactstrap components
 import {
     Container
 } from "reactstrap";
-const Error = () => {
-  const { error } = useContext(RestaurantContext)
+const Error = (props) => {
+  const { error } = props
  
     return ( <>
     

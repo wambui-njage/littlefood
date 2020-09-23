@@ -21,6 +21,5 @@ app.use(express.urlencoded({ extended: true }));
 
 // require("./config/db");
 require("./backend/config/routes")(app);
-console.log("WE GLOBAL")
 
 app.listen(port);

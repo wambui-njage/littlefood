@@ -1,8 +1,5 @@
-import React , { useEffect ,useReducer}from "react";
-
+import React , { useEffect ,useReducer }from "react";
 import axios from 'axios';
-// reactstrap components
-// core components
 import Navbar from "layouts/Navbars/Navbar.js";
 import PageHeader from "layouts/Headers/PageHeader.js";
 import Footer from "layouts/Footers/Footer.js";
@@ -14,7 +11,7 @@ import Loading from "../sections/global/Loading";
 import { CSSTransition } from 'react-transition-group';
 import "../../assets/css/style.css";
 import {  Container } from "reactstrap";
-
+import useFetch from "../../hooks/fetch";
 
 
 const reducer = (state,action) => {
@@ -49,7 +46,7 @@ function RestaurantPage(props) {
 
   const intialState = {
     hotel:{},
-    error:'',
+    error:null,
     id:props.match.params.id,
     loading : true
   };
@@ -58,49 +55,41 @@ function RestaurantPage(props) {
 
   document.documentElement.classList.remove("nav-open");
 
+  const { response, error } = useFetch({
+    api: axios,
+    method: "get",
+    url: `http://localhost:5000/restaurant/${intialState.id}`
+ });
+
   useEffect(() => {
 
+    if(response){
 
-    const fetchHotel = async () => {
+      setTimeout(() => { dispatch({type:'SUCCESS',payload:response}); }, 1000);
 
-      await axios(
-        `http://localhost:5000/restaurant/${state.id}`,
-      ).then(result => { 
-        
-        setTimeout(() => { dispatch({type:'SUCCESS',payload:result.data}); }, 1000);
-
-     
-        
-			})
-			.catch(error => {
-
-        setTimeout(() => { dispatch({ type: 'ERROR' }); }, 3000);
-
-        
-				
-			})
-
-     
-  
     }
 
-    fetchHotel()
+    if(error){
 
+      setTimeout(() => { dispatch({ type: 'ERROR' }); }, 3000);
+
+    }
+        
     document.body.classList.add("landing-page");
 
     return function cleanup() {
     document.body.classList.remove("landing-page");
     };
 
-  }, []);
+  }, [response]);
 
   return (
     <>
       <Navbar/>
       <PageHeader/>
       <RestaurantContext.Provider value={state} >
-      { state.loading &&  <Loading/> }
-      { state.error && <Error /> }
+      { state.loading && !error &&  <Loading/> }
+      { error && <Error error = {error} /> }
       
       {
        Object.keys(state.hotel).length > 0 && <Container >
