@@ -57,10 +57,10 @@ function SectionMerchants() {
           { isLoading &&  <Loading/> }
           <CardDeck>
 
-          { error && <Error error={error} /> }
+              { error && <Error error={error} /> }
               { Object.entries(restaurants).map((value, index) => { return  <Card key={value[1].RestaurantID}>
                 
-                <CardImg top width="100%" style={{height:"-webkit-fill-available"}} src={value[1].Image} alt="Card image cap" />
+                <CardImg top width="100%" style={{height:"-webkit-fill-available"}} src={value[1].Image} alt="Card image cap" loading="lazy" />
                 <CardBody>
                 <CardTitle className="font-weight-bold text-secondary">{value[1].RestaurantName.toUpperCase()}</CardTitle>
                   <CardText>0.8 KM Away</CardText>

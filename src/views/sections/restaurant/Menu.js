@@ -134,7 +134,7 @@ function Menu(){
                       <Col className="ml-auto mr-auto" lg="2" md="4" xs="4">
                         <img
                           alt="..."
-                          
+                          loading="lazy"
                           className="img-circle img-no-padding img-responsive"
                           src={item.FoodImage} 
                           onError={addDefaultSrc}

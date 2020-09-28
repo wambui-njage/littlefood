@@ -18,15 +18,16 @@
 */
 /*eslint-disable*/
 import React from "react";
-
+import DeviceEmulator from 'react-device-emulator';
 // reactstrap components
 import { Container } from "reactstrap";
-
+import 'react-device-emulator/lib/styles/style.css';
 // core components
 
 function IndexHeader() {
   return (
     <>
+    
       <div
         className="page-header section-dark"
         style={{
@@ -37,18 +38,37 @@ function IndexHeader() {
         <div className="filter" />
         <div className="content-center">
           <Container>
+
+          {/* <div class="smartphone">
+  <div class="content">
+    <iframe src={require("assets/img/demo.mp4")}   />
+  </div>
+</div> */}
+
+
+            
+          
             <div className="title-brand">
-              <h1 className="presentation-title">Little Food</h1>
-              {/* <div className="fog-low">
-                <img alt="..." src={require("assets/img/fog-low.png")} />
+              <div className="row">
+              
+              <div className="iframe col-5" style={{
+          backgroundImage:
+            "url(" + require("assets/img/phone.png") + ")",
+        }}>
+          <video class="sample-phone-img sample-phone-img-simple ml-1" src={require("assets/img/demo.mp4")} autoplay="true" loop="true" playsinline="" muted="true"></video>
+{/* <iframe  frameborder="0"></iframe> */}
+</div>
+<h3 className="presentation-title col mt-auto mb-auto">Little Food</h3>
+
               </div>
-              <div className="fog-low right">
-                <img alt="..." src={require("assets/img/fog-low.png")} />
-              </div> */}
+           
+              
+
+        
             </div>
-            <h2 className="presentation-subtitle text-center">
+            {/* <h2 className="presentation-subtitle text-center">
             Loosen up a little.
-            </h2>
+            </h2> */}
           </Container>
         </div>
         {/* <div
