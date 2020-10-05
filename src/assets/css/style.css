@@ -22,4 +22,11 @@
     height: 40px !important;
     width: 40px !important;
 }
+.noanime{
 
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+
+}

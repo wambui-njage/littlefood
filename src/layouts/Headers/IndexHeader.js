@@ -55,7 +55,7 @@ function IndexHeader() {
           backgroundImage:
             "url(" + require("assets/img/phone.png") + ")",
         }}>
-          <video class="sample-phone-img sample-phone-img-simple ml-1" src={require("assets/img/demo.mp4")} autoplay="true" loop="true" playsinline="" muted="true"></video>
+          <video className="sample-phone-img sample-phone-img-simple ml-1" src={require("assets/img/demo.mp4")} autoPlay= {true} loop={true} playsInline="" muted= {true}> </video>
 {/* <iframe  frameborder="0"></iframe> */}
 </div>
 <h3 className="presentation-title col mt-auto mb-auto">Little Food</h3>

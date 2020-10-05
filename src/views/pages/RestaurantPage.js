@@ -5,7 +5,7 @@ import PageHeader from "layouts/Headers/PageHeader.js";
 import Footer from "layouts/Footers/Footer.js";
 import Menu from "../sections/restaurant/Menu.js";
 import RestaurantDescription from "../sections/restaurant/RestaurantDescription";
-import Error from "../sections/restaurant/Error.js";
+import Error from "../sections/global/Error.js";
 import RestaurantContext from "../context/Restaurant";
 import Loading from "../sections/global/Loading";
 import { CSSTransition } from 'react-transition-group';

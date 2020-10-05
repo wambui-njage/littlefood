@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useFetch from "../../../hooks/fetch";
 import axios from "axios";
 import Loading from "../restaurant/Loading";
-import Error from "../restaurant/Error.js";
+import Error from "../global/Error.js";
 import { CSSTransition } from 'react-transition-group';
 // reactstrap compnents
 import {

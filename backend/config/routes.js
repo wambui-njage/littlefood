@@ -1,6 +1,7 @@
 const express = require("express");
 // const auth = require("../middleware/auth");
 const restaurant = require("../routes/restaurant");
+const reports = require("../routes/reports");
 const bodyParser = require('body-parser');
 const cors = require('cors');
 // const flash = require('cookie-parser');
@@ -22,5 +23,6 @@ module.exports = function(app) {
 // });
 app.use(cors());
 app.use("/restaurant", restaurant);
+app.use("/reports", reports);
  
 };

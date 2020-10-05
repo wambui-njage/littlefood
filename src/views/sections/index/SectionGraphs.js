@@ -1,36 +1,58 @@
-/*!
 
-=========================================================
-* Paper Kit React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-kit-react
-
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/paper-kit-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React,{ useState } from "react";
-// react plugin used to create switch buttons
-
-
-// reactstrap components
+import React,{ useEffect, useState } from "react";
+import axios from "axios";
+import useFetch from "../../../hooks/fetch";
+import Loading from "../restaurant/Loading";
+import Error from "../global/Error.js";
 import {
     Container,
     Card, 
     CardDeck,
-    CardBody
+    CardBody,
+    Button,
+    Input,
+    FormGroup,
+    Form,
+    Row,
+    Col,
+    Label,
+    CardImg, CardFooter
 } from "reactstrap";
 import Chart from "react-apexcharts";
+import { useForm } from "react-hook-form";
 
 
 function SectionGraphs() {
+  const [error , setError] = useState("")
+  const { register, handleSubmit , getValues, errors } = useForm(); 
+
+
+ 
+    const onSubmit =  () => {
+     
+    
+      fetch('http://localhost:5000/reports/food', {
+      method: 'post',
+      body: JSON.stringify(getValues()),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => response.blob())
+      .then((blob) => {
+
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'report.xlsx');
+        document.body.appendChild(link);
+        link.click();
+        link.parentNode.removeChild(link);
+       
+      })
+      .catch(setError("Well this is awkward"))
+  }
+
+
+
 
     const [gragh , setGraph] = useState(
         {
@@ -126,8 +148,72 @@ function SectionGraphs() {
           <div className="title">
             <h2 className="text-center">Consumption Per Month </h2>
           </div>
-          <CardDeck>
-          <Card>
+          <Card  className="col">
+            
+            <CardBody>
+            { error && <Error error={error} /> }
+
+            { !error && <Form onSubmit={handleSubmit(onSubmit)} >
+                <Row form>
+
+                <Col md={3} className="mt-auto mb-auto text-center">
+                  
+                  <FormGroup className="mt-auto mb-auto">
+                  
+                  <CardImg width="50%"  height="50%" src={require("assets/img/report.png")} alt="Card image cap" />
+                  </FormGroup>
+                  </Col>
+
+                  <Col md={3} className="mt-auto mb-auto ">
+                    <FormGroup>
+                      <Label for="exampleEmail">From Date</Label>
+                    
+                      <input className="form-control" type="date" name="fromdate"  ref={register( { required: true})} required />
+                    </FormGroup>
+                  </Col>
+
+                  <Col md={3} className="mt-auto mb-auto ">
+                    <FormGroup>
+                      <Label for="examplePassword">To Date</Label>
+                      <input className="form-control" type="date" name="todate" id="todate"  ref={register({
+                          required: true,
+                          validate: () => new Date(getValues("todate")) >= new Date(getValues("fromdate"))
+                        })} required  />
+                    </FormGroup>
+                  </Col>
+
+                  <Col md={3} className="mt-auto mb-auto text-center">
+
+                  
+                  
+                  <FormGroup className="mt-auto mb-auto">
+                  
+                    <Button className="btn-round" color="info" outline type="submit">
+                      Download
+                      <i className="fa fa-download" />
+                    </Button>
+                  </FormGroup>
+                  </Col>
+
+                  </Row>
+              </Form> }
+
+              <CardFooter>
+              {errors.todate && errors.todate.type === "validate" && (
+                  <div className="text-danger text-center font-weight-normal">
+                    TO DATE MUST GREATER THAN FROM DATE
+                  </div>
+                )}
+
+      
+              </CardFooter>
+           
+           
+            </CardBody>
+          </Card> 
+
+        <CardDeck>
+      <Card>
      
         <CardBody>
         <div id="chart">
@@ -135,7 +221,6 @@ function SectionGraphs() {
                options={gragh.options} series={gragh.series} type="bar" height={350} 
             />
             
-       
         </div>
         </CardBody>
       </Card>
