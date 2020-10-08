@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Restaurant , RestaurantMenu } = require("../config/db");
+const { Restaurant } = require("../config/db");
 const excel = require('exceljs');
 const moment = require('moment');
 
@@ -36,7 +36,9 @@ router.post('/food', async function(req, res, next) {
     const imageId1 = workbook.addImage({
         filename: "public/little.png",
         extension: 'png',
-      });
+      },
+      {ext: { width: 500, height: 200 }}
+      );
 
       // set background
     worksheet.addBackgroundImage(imageId1);

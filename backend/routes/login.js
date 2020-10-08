@@ -10,7 +10,7 @@ router.post('/', async function(req, res, next) {
         const account = await User.findOne({ email });
 
       
-        if (!account || !bcrypt.compareSync(password, account.passwordHash)) {
+        if (!account || !bcrypt.compareSync(password, account.password)) {
             
             return false;
         } else {

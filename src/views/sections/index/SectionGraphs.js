@@ -24,13 +24,14 @@ import { useForm } from "react-hook-form";
 
 function SectionGraphs() {
   const [error , setError] = useState("")
+  const [loading , setLoading] = useState(false)
   const { register, handleSubmit , getValues, errors } = useForm(); 
 
 
  
     const onSubmit =  () => {
      
-    
+      setLoading(true)
       fetch('http://localhost:5000/reports/food', {
       method: 'post',
       body: JSON.stringify(getValues()),
@@ -46,9 +47,13 @@ function SectionGraphs() {
         document.body.appendChild(link);
         link.click();
         link.parentNode.removeChild(link);
+        setLoading(false)
        
       })
-      .catch(setError("Well this is awkward"))
+      .catch(err => {
+        setLoading(false)
+        setError("Well this is awkward")
+      })
   }
 
 
@@ -188,7 +193,7 @@ function SectionGraphs() {
                   
                   <FormGroup className="mt-auto mb-auto">
                   
-                    <Button className="btn-round" color="info" outline type="submit">
+                    <Button disabled={loading} className="btn-round" color="info" outline type="submit">
                       Download
                       <i className="fa fa-download" />
                     </Button>
