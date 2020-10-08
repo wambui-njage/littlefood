@@ -12,7 +12,7 @@ app.use(
   })
 );
 
-app.use(express.static(__dirname + '/backend/public/'));
+app.use(express.static(__dirname + '/build'));
 //body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
