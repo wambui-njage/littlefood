@@ -22,7 +22,7 @@ module.exports = function(app) {
 //   next();
 // });
 app.use(cors());
-app.use("/restaurant", restaurant);
-app.use("/reports", reports);
+app.use("/api/restaurant", restaurant);
+app.use("/api/reports", reports);
  
 };

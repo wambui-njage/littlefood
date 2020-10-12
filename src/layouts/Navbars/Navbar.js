@@ -72,7 +72,7 @@ function MainNavbar() {
         <div className="navbar-translate">
           <NavbarBrand
             data-placement="bottom"
-            to="/index"
+            to="/home"
             tag={Link}
           >
             LITTLE FOOD
@@ -95,8 +95,8 @@ function MainNavbar() {
           isOpen={navbarCollapse}
         >
           <Nav navbar>
-            <NavItem>
-              <NavLink to="/index" tag={Link}>
+            {/* <NavItem>
+              <NavLink to="/home" tag={Link}>
                 <i className="nc-icon nc-layout-11" /> Components
               </NavLink>
             </NavItem>
@@ -119,7 +119,7 @@ function MainNavbar() {
                 <i className="fa fa-instagram" />
                 <p className="d-lg-none">Instagram</p>
               </NavLink>
-            </NavItem>
+            </NavItem> */}
            
           </Nav>
         </Collapse>

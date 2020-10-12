@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     return sequelize.define(
-      "restaurantmenu",
+      "RestaurantMenu",
       {
 
             MenuID : { type: Sequelize.STRING, primaryKey: true },

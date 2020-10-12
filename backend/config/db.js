@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
 
   {
     host: process.env.DB_HOST,
-    dialect: "mysql",
+    dialect: "mssql",
     // driver: "tedious",
     // operatorsAliases: false,
     // dialectOptions: {

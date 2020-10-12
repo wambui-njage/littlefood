@@ -1,7 +1,8 @@
 const express = require("express");
 const session = require("express-session");
 const app = express();
-const port = 5000;
+const port = 4035;
+const path = require('path');
 
 app.use(
   session({
@@ -12,7 +13,7 @@ app.use(
   })
 );
 
-app.use(express.static(__dirname + '/build'));
+app.use(express.static(__dirname + '/build/'));
 //body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,5 +22,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // require("./config/db");
 require("./backend/config/routes")(app);
+
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/build/index.html'));
+});
 
 app.listen(port);

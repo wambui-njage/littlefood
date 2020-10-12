@@ -32,7 +32,7 @@ function SectionGraphs() {
     const onSubmit =  () => {
      
       setLoading(true)
-      fetch('http://localhost:5000/reports/food', {
+      fetch('/api/reports/food', {
       method: 'post',
       body: JSON.stringify(getValues()),
       headers: { 'Content-Type': 'application/json' }

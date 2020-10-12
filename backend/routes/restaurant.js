@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { Op } = require("sequelize");
 const { Restaurant , RestaurantMenu } = require("../config/db");
 
 
@@ -7,11 +8,21 @@ router.get('/', async (req, res) => {
 
   try {
 
-    const hotels = await Restaurant.findAll();
+    const hotels = await Restaurant.findAll({
+      where: {
+
+        Image : {
+          [Op.not]: null
+        }
+        
+      },
+      limit: 5
+    });
     return res.status(200).json(hotels);
     
   } catch (error) {
-  
+    
+    console.log(error)
     return res.status(500).json({error:"server error"});
     
   }

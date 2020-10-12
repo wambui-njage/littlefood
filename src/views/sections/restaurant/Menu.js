@@ -66,7 +66,7 @@ function Menu(){
     const fetchMenu = async () => {
 
       await axios.get(
-        `http://localhost:5000/restaurant/menu/${hotel.RestaurantID}`,
+        `/api/restaurant/menu/${hotel.RestaurantID}`,
       ).then(result => {    
 
         dispatch({type:'SUCCESS',payload:result.data});

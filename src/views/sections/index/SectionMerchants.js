@@ -24,7 +24,7 @@ function SectionMerchants() {
     const { response, isLoading , error} = useFetch({
       api: axios,
       method: "get",
-      url: "http://localhost:5000/restaurant"
+      url: "/api/restaurant"
    });
 
 //  console.log(response, isLoading , error)

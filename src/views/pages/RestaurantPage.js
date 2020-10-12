@@ -58,7 +58,7 @@ function RestaurantPage(props) {
   const { response, error } = useFetch({
     api: axios,
     method: "get",
-    url: `http://localhost:5000/restaurant/${intialState.id}`
+    url: `/api/restaurant/${intialState.id}`
  });
 
   useEffect(() => {
