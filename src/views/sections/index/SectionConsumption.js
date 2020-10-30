@@ -1,35 +1,40 @@
-/*!
-
-=========================================================
-* Paper Kit React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-kit-react
-
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/paper-kit-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
-// reactstrap components
+import React ,{useState,useEffect} from "react";
+import ConsumptionLoading from "../global/ConsumptionLoading";
 import {
   
   Container,
   Table,
   Progress 
 } from "reactstrap";
+import axios from "axios";
+import useFetch from "../../../hooks/fetch";
 
 function SectionConsumption() {
 
+  const [users,setUsers] = useState([])
+
+  const { response , isLoading ,error} = useFetch({
+    api: axios,
+    method: "get",
+    url: "/api/reports/users"
+ });
+
+ useEffect(() =>{
+
+  
+  if (response) {
+
+      setUsers(response.slice(0, 5))
+
+    }
+
+},[response])
+
+
   return (
     <>
-      <div className="section">
+      { isLoading &&  <ConsumptionLoading/> }
+      {!error && users.length && (<div className="section">
         <Container>
           <div className="title">
             <h2 className="text-center">Comsuption Per User </h2>
@@ -40,46 +45,33 @@ function SectionConsumption() {
       <thead>
         <tr>
           <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
+          <th>Name</th>
+          <th>Phone</th>
           <th>Consumption</th>
         </tr>
       </thead>
       <tbody>
-      <tr>
-          <th scope="row">1</th>
-          <td>Larry</td>
-          <td>Page</td>
-          <td>
-          <Progress value={50} max="135" />
-         <div className="text-center">75 of 111</div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Nova</td>
-          <td>Taylor</td>
-          <td>
-          <Progress value={50} max="135" />
-         <div className="text-center">75 of 111</div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Jay</td>
-          <td>Paters</td>
-          <td>
-          <Progress value={50} max="135" />
-         <div className="text-center">75 of 111</div>
-          </td>
-        </tr>
-        
+       
+        { Object.entries(users).map((value,key) => {  return   <tr key={users[key].MobileNumber}>
+            <th scope="row">{key+1}</th>
+            <td>{users[key].FullName}</td>
+            <td>{users[key].MobileNumber}</td>
+            <td>
+              <Progress value={users[key].total} max="50000" />
+              <div className="text-center">Ksh{users[key].total} of Ksh5000</div>
+            </td>
+          </tr>
+
+        })}
+          
+      
+          
       </tbody>
     </Table>
           
          
         </Container>
-      </div>
+      </div>)}
     </>
   );
 }

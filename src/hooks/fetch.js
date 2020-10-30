@@ -19,7 +19,7 @@ export default function useFetch({ api, method, url, data = null, config = null 
                .then((res) => {
                  
                   if(res.error){
-
+                    
                      setError("Something Went Terribly Wrong");
                   }
                   
@@ -30,7 +30,7 @@ export default function useFetch({ api, method, url, data = null, config = null 
                   setIsLoading(false);
                });
          } catch (err) {
-            
+         
             setError("Something Went Terribly Wrong");
          }
       // }
@@ -39,7 +39,6 @@ export default function useFetch({ api, method, url, data = null, config = null 
       fetchData();
    }, [api, method, url, data, config]);
 
- 
 
    return { response, error, isLoading };
 }

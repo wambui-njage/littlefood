@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     return sequelize.define(
-      "merchanttransactions",
+      "MerchantTransactions",
       {
 
             RowID : { type: Sequelize.STRING, primaryKey: true },
@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
             CorporateID : Sequelize.STRING,
             MerchantID : Sequelize.STRING,
             PaymentCode : Sequelize.STRING,
-            TrxDate : Sequelize.DATE,
+            TrxDate : Sequelize.DATEONLY,
             TrxID : Sequelize.STRING,
             Description : Sequelize.STRING,
             Amount : Sequelize.STRING,

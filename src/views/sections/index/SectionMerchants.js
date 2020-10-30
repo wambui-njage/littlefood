@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import useFetch from "../../../hooks/fetch";
 import axios from "axios";
 import Loading from "../restaurant/Loading";
-import Error from "../global/Error.js";
+import Error from "../global/Error";
+import ImageLoad from "../global/ImageLoad"
 import { CSSTransition } from 'react-transition-group';
 // reactstrap compnents
 import {
@@ -58,14 +59,22 @@ function SectionMerchants() {
           <CardDeck>
 
               { error && <Error error={error} /> }
-              { Object.entries(restaurants).map((value, index) => { return  <Card key={value[1].RestaurantID}>
+              { Object.entries(restaurants).map((value, index) => { return  <Card key={restaurants[index].RestaurantID}>
                 
-                <CardImg top width="100%" style={{height:"-webkit-fill-available"}} src={value[1].Image} alt="Card image cap" loading="lazy" />
+                <ImageLoad
+  
+                  src={restaurants[index].Image}
+                  placeholder={restaurants[index].Image}
+                  alt="Decription"
+                  className="card-img-top" 
+                  />
+                {/* <img width="100%" src="https://littleimages.blob.core.windows.net/fooddelivery/000686/000686" alt="Card image cap" loading="lazy" class="card-img-top" style="height: -webkit-fill-available;"> */}
+                {/* <CardImg top width="100%" style={{height:"-webkit-fill-available"}} src={restaurants[index].Image} alt="Card image cap" loading="lazy" /> */}
                 <CardBody>
-                <CardTitle className="font-weight-bold text-secondary">{value[1].RestaurantName.toUpperCase()}</CardTitle>
+                <CardTitle className="font-weight-bold text-secondary">{restaurants[index].RestaurantName}</CardTitle>
                   <CardText>0.8 KM Away</CardText>
-                    {/* <CardText>{value[1].RestaurantName}</CardText> */}
-                    <Link className="btn btn-secondary" to={{pathname:`/restaurant/${value[1].RestaurantID}` }} >
+                    {/* <CardText>{restaurants[index].RestaurantName}</CardText> */}
+                    <Link className="btn btn-secondary" to={{pathname:`/restaurant/${restaurants[index].RestaurantID}` }} >
                         View Menu
                     </Link>
                 </CardBody>

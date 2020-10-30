@@ -41,8 +41,8 @@
 
 .sample-phone-img {
   background-color: #fff;
-  width: 203px;
-  height: 420px;
+  width: 199px;
+  height: 423px;
   border: 5px solid #fff;
   border-radius: 15px 15px 20px 20px;
 }
@@ -95,6 +95,20 @@
   background: white;
 }
 
+.video-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: opacity 400ms ease 0ms;
+}
+.tiny {
+  filter: blur(20px);
+  transform: scale(1.1);
+  transition: visibility 0ms ease 400ms;
+}
+
 .iframe {
   position: relative;
   padding-top: 25px;
@@ -107,7 +121,6 @@
 iframe {
 
     display:block;
-
     width: 218px;
     height: 442px;
     padding-top: 53px;
@@ -129,7 +142,7 @@ iframe {
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 770px) {
 
   .iframe { display: none }
 

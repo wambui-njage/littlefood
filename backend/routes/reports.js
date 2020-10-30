@@ -1,35 +1,141 @@
 const express = require('express');
 const router = express.Router();
-const { Restaurant } = require("../config/db");
+const { MerchantTransactions , Rider} = require("../config/db");
 const excel = require('exceljs');
 const moment = require('moment');
+const { Sequelize, Op } = require("sequelize");
+const sequelize = new Sequelize('mssql::memory:');
 
+router.get('/' , async function(req,res,next){
+
+  const report = await MerchantTransactions.findAll({ 
+        where: {
+          // CorporateID:req.session.corporate.CorporateID,
+             TrxDate: {
+                  [Op.gte]: moment().startOf('year').format("YYYY-MM-DD"), 
+                  [Op.lte]: moment().endOf('year').format("YYYY-MM-DD")
+             }
+          } ,
+        attributes: [ 
+          
+          [sequelize.literal('datepart(MONTH, TrxDate)'), 'TrxDate'],
+          [sequelize.fn('count',sequelize.col('RowID')), 'total']
+        ],
+         group: [sequelize.literal('datepart(MONTH, TrxDate)')]
+     });
+
+     if(!report.length){
+
+       return res.status(404).json({"message":"No Data Found"});
+
+     }
+
+      return res.status(200).json(report);
+
+});
+
+router.get('/users' , async function(req,res,next){
+
+  const report = await Rider.findAll({
+
+            include: [{
+            model: MerchantTransactions,
+            where: {
+          // CorporateID:req.session.corporate.CorporateID,
+                TrxDate: {
+                      [Op.gte]: moment().startOf('year').format("YYYY-MM-DD"), 
+                      [Op.lte]: moment().endOf('year').format("YYYY-MM-DD")
+                      }
+                },
+
+            attributes: [],
+            
+
+          }],
+
+          attributes: { 
+            include: [
+              [sequelize.fn("COUNT", sequelize.col("MerchantTransactions.RowID")), "total"]
+            ] 
+          },
+          
+          group: ["Riders.MobileNumber","Riders.EMailID","Riders.FullName"],
+          order: [[Sequelize.literal('total'), 'DESC']],
+         
+          
+  });
+  
+  //await MerchantTransactions.findAll({ 
+  //       where: {
+  //         // CorporateID:req.session.corporate.CorporateID,
+  //            TrxDate: {
+  //                 [Op.gte]: moment().startOf('year').format("YYYY-MM-DD"), 
+  //                 [Op.lte]: moment().endOf('year').format("YYYY-MM-DD")
+  //            }
+  //         } ,
+
+  //         include: [{
+  //           model: Rider
+  //         }],
+
+  //       attributes: [       
+
+  //         [sequelize.fn('count',sequelize.col('RowID')), 'total'],
+  //         "MerchantTransactions.MobileNumber"
+
+  //       ],
+        
+  //       group: "MerchantTransactions.MobileNumber",
+
+  //       order: [
+  //         [sequelize.fn('count',sequelize.col('RowID')),'DESC']
+  //       ],
+  //       limit:5
+  //    });
+
+     if(!report.length){
+
+       return res.status(404).json({"message":"No Data Found"});
+
+     }
+
+      return res.status(200).json(report);
+
+});
 
 router.post('/food', async function(req, res, next) {
 
     let { from, to  } = req.body;
 
-    if(!from){
+    jsonCustomers = await MerchantTransactions.findAll({ 
+        where: {
+          CorporateID:req.session.corporate.CorporateID,
+          TrxDate: {
+                  [Op.gte]: moment(from).format('YYYY-MM-DD'),
+                  [Op.lte]: moment(to).format('YYYY-MM-DD')
+             }
+          } 
+     })
 
-        from =  moment().startOf('day').format("MM-DD-YYYY");  
 
+    if(!jsonCustomers.length){
+
+      return res
+      .status(404).json({"message":"No transactions found for the date range given"});
     }
 
-    if(!to){
 
-        to =  moment().endOf('day').format("MM-DD-YYYY");  
-
-    }
-
-
-    const jsonCustomers = JSON.parse(JSON.stringify(await Restaurant.findAll()));
     let workbook = new excel.Workbook(); //creating workbook
     let worksheet = workbook.addWorksheet('Customers'); //creating worksheet
 
     //  WorkSheet Header
     worksheet.columns = [
-        { header: 'Name', key: 'RestaurantName', width: 30 },
-        { header: 'TypeOfRestaurant', key: 'TypeOfRestaurant', width: 30 }
+        { header: 'Customer Phone', key: 'MobileNumber', width: 30 },
+        { header: 'Email Address', key: 'EMailID', width: 30 },
+        { header: 'Date', key: 'TrxDate', width: 30 },
+        { header: 'Payment Amount', key: 'Amount', width: 30 },
+        { header: 'Mode of Payment', key: 'PaymentMode', width: 30 }
+     
         
     ];
 

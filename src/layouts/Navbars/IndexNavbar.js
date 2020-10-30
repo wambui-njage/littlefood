@@ -17,7 +17,7 @@
 
 */
 import React  from "react";
-import { Link } from "react-router-dom";
+import { Link  , useHistory } from "react-router-dom";
 // nodejs library that concatenates strings
 import classnames from "classnames";
 // reactstrap components
@@ -37,6 +37,7 @@ import {
 } from "reactstrap";
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 function IndexNavbar() {
+  const history = useHistory();
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
   const [openMenu,setOpenMenu] = React.useState(false);
@@ -44,6 +45,27 @@ function IndexNavbar() {
   const toggleNavbarCollapse = () => {
     setNavbarCollapse(!navbarCollapse);
     document.documentElement.classList.toggle("nav-open");
+  };
+
+  function handleClick(){
+    fetch('/api/login', {
+      method: 'get',
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => {
+        if(response.status === 200){
+          history.push("/login");
+            }else if(response.status === 400){
+                console.log("SOMETHING WENT WRONG")
+                
+            }
+        
+      })
+      
+      .catch(err => {
+      
+        console.log(err)
+      })
   };
 
   React.useEffect(() => {
@@ -109,11 +131,11 @@ function IndexNavbar() {
             {/* <NavItem>
             <AnchorLink offset='100' className="nav-link" href='#graghs'>graghs</AnchorLink>
             </NavItem> */}
-            {/* <NavItem>
-            <NavLink to="/profile-page" tag={Link}>
-                <i className="nc-icon nc-layout-11" /> Outside
+            <NavItem>
+            <NavLink className="pointer"  onClick={handleClick} >
+                 Logout
               </NavLink>
-            </NavItem> */}
+            </NavItem>
             
             {/* <UncontrolledDropdown nav inNavbar>
 

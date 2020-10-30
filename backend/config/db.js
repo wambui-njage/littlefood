@@ -2,6 +2,11 @@ require("dotenv").config();
 const Sequelize = require("sequelize");
 const RestaurantModel = require("../models/restaurant");
 const RestaurantMenuModel = require("../models/restaurantmenu");
+const UserModel = require("../models/users");
+const CorporateAdminModel = require("../models/corporateadmin");
+const MerchantTransactionsModel = require("../models/transactions");
+const CorporateModel = require("../models/corporate");
+const RiderModel = require("../models/rider");
 
 
 const sequelize = new Sequelize(
@@ -42,8 +47,21 @@ sequelize
 
 const Restaurant = RestaurantModel(sequelize, Sequelize);
 const RestaurantMenu = RestaurantMenuModel(sequelize, Sequelize);
+const User = UserModel(sequelize, Sequelize);
+const CorporateAdmin = CorporateAdminModel(sequelize, Sequelize);
+const MerchantTransactions = MerchantTransactionsModel(sequelize, Sequelize);
+const Corporate = CorporateModel(sequelize, Sequelize);
+const Rider = RiderModel(sequelize, Sequelize);
+
+Rider.hasMany(MerchantTransactions, {foreignKey: 'MobileNumber'}); 
 
 module.exports = {
   Restaurant,
-  RestaurantMenu
+  RestaurantMenu,
+  User,
+  CorporateAdmin,
+  MerchantTransactions,
+  Corporate,
+  Rider
+
 };

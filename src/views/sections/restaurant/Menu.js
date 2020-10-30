@@ -50,7 +50,7 @@ const intialState = {
 function Menu(){
 
   const addDefaultSrc = (ev) => {
-      ev.target.src = require("assets/img/defaultfood.png")
+      ev.target.src = require("../../../assets/img/defaultfood.png")
     }
 
   const [state , dispatch] = useReducer(reducer,intialState)
