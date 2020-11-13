@@ -5,23 +5,31 @@ const { sendData } = require('../utils');
 
 router.post('/', async (req, res) => {
 
+    console.log(req.body)
+
     const data = JSON.stringify({
         "FORMID":"ADDCORPORATEWALLET",
         "CorporateWallet":{
-        "MobileNumber": 254721840501,
-        "CorporateID" :"5984b46c565f1",
+        "MobileNumber": req.body.MobileNumber,
+        "CorporateID" :req.body.CorporateID,
         "WalletType":"FOOD",
-        "LimitType" :"D",
-        "LimitAmount":100,
-        "UserID" :"wambui.njagi@craftsilicon.com",
+        "LimitType" :req.body.LimitType,
+        "LimitAmount":req.body.Amount,
+        "UserID" :req.session.user.email,
         "Country" :"KENYA"
         }
     })
 
 
-    const str = 'FORMID|JSONDATA|JSONDATA|{"FORMID":"ADDCORPORATEWALLET","CorporateWallet":{"MobileNumber":254721840501,"CorporateID":"5984b46c565f1","WalletType":"FOOD","LimitType":"D","LimitAmount":100,"UserID":"wambui.njagi@craftsilicon.com","Country":"KENYA"}}';
+    const str = `FORMID|JSONDATA|JSONDATA|${data}`;
     const results = await sendData(process.env.TESTURL, str);
-    return res.send(results)
+
+   if(results[0].Status === "091"){
+
+       return res.status(403).json({"message":results[0].Message});
+   }
+
+      return res.status(200).json({"message":results[0].Message});
 
 		
 })

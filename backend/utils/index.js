@@ -6,7 +6,7 @@ function sendData(url, FORMID) {
         url: decrypt(url), 
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         data: `DATA=${encodeURIComponent(encrypt(FORMID))}`
-        }).then(response => decrypt(response.data)
+        }).then(response => response.data
         
         )
 }

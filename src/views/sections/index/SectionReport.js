@@ -23,10 +23,30 @@ function SectionReport() {
 
  
     const onSubmit =  () => {
-     
+
+    // console.log(JSON.stringify(getValues()))
+
       setLoading(true)
 
-      axios({
+      axios.post('/api/reports/food', getValues(), {
+        responseType: 'blob',
+        headers: { 'Content-Type': 'application/json' }
+      }).then((response) => {
+
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'report.xlsx'); //or any other extension
+        document.body.appendChild(link);
+        link.click();
+        setLoading(false)
+      })
+      .catch(err => {
+        setLoading(false)
+        setError(err.response.statusText)
+      })
+
+     /* axios({
         url: '/api/reports/food', //your url
         method: 'POST',
         responseType: 'blob', // important
@@ -45,7 +65,7 @@ function SectionReport() {
       .catch(err => {
         setLoading(false)
         setError(err.response.statusText)
-      })
+      }) */
   } 
 
   return (

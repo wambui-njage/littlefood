@@ -22,7 +22,7 @@ function PageHeader() {
       <div
         style={{
           backgroundImage:
-            "url(" + require("assets/img/food.jpg") + ")",
+            "url(" + require("assets/img/Healthy-Food.jpg") + ")",
         }}
         className="page-header page-header-xs"
         data-parallax={true}

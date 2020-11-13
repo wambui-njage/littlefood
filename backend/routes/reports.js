@@ -10,7 +10,7 @@ router.get('/' , async function(req,res,next){
 
   const report = await MerchantTransactions.findAll({ 
         where: {
-          // CorporateID:req.session.corporate.CorporateID,
+          CorporateID:req.session.corporate.CorporateID,
              TrxDate: {
                   [Op.gte]: moment().startOf('year').format("YYYY-MM-DD"), 
                   [Op.lte]: moment().endOf('year').format("YYYY-MM-DD")
@@ -41,7 +41,7 @@ router.get('/users' , async function(req,res,next){
             include: [{
             model: MerchantTransactions,
             where: {
-          // CorporateID:req.session.corporate.CorporateID,
+                CorporateID:req.session.corporate.CorporateID,
                 TrxDate: {
                       [Op.gte]: moment().startOf('year').format("YYYY-MM-DD"), 
                       [Op.lte]: moment().endOf('year').format("YYYY-MM-DD")
@@ -59,7 +59,7 @@ router.get('/users' , async function(req,res,next){
             ] 
           },
           
-          group: ["Riders.MobileNumber","Riders.EMailID","Riders.FullName"],
+          group: ["Riders.MobileNumber","Riders.EMailID","Riders.FullName","Riders.ProfilePicture"],
           order: [[Sequelize.literal('total'), 'DESC']],
          
           
@@ -107,6 +107,8 @@ router.post('/food', async function(req, res, next) {
 
     let { from, to  } = req.body;
 
+    
+
     jsonCustomers = await MerchantTransactions.findAll({ 
         where: {
           CorporateID:req.session.corporate.CorporateID,
@@ -116,7 +118,7 @@ router.post('/food', async function(req, res, next) {
              }
           } 
      })
-
+      console.log("CUSOTMER => ", jsonCustomers);
 
     if(!jsonCustomers.length){
 

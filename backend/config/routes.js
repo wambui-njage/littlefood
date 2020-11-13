@@ -4,6 +4,7 @@ const restaurant = require("../routes/restaurant");
 const reports = require("../routes/reports");
 const login = require("../routes/login");
 const wallet = require("../routes/wallet");
+const staff = require("../routes/staff");
 const auth = require("../middleware/auth");
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -38,6 +39,7 @@ app.use(session({
 app.use(cors());
 app.use("/api/restaurant",auth,restaurant);
 app.use("/api/reports",auth,reports);
+app.use("/api/staff",auth,staff);
 app.use("/api/wallet",wallet);
 app.use("/api/login",login);
 app.get('*', auth ,(req,res) =>{

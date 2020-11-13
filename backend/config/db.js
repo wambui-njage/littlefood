@@ -7,6 +7,7 @@ const CorporateAdminModel = require("../models/corporateadmin");
 const MerchantTransactionsModel = require("../models/transactions");
 const CorporateModel = require("../models/corporate");
 const RiderModel = require("../models/rider");
+const CorporateRiderModel = require("../models/corporaterider");
 
 
 const sequelize = new Sequelize(
@@ -52,8 +53,13 @@ const CorporateAdmin = CorporateAdminModel(sequelize, Sequelize);
 const MerchantTransactions = MerchantTransactionsModel(sequelize, Sequelize);
 const Corporate = CorporateModel(sequelize, Sequelize);
 const Rider = RiderModel(sequelize, Sequelize);
+const CorporateRider = CorporateRiderModel(sequelize, Sequelize);
+
+//relationships
 
 Rider.hasMany(MerchantTransactions, {foreignKey: 'MobileNumber'}); 
+CorporateRider.belongsTo(Rider, {foreignKey: 'MobileNumber'}); 
+CorporateRider.belongsTo(Corporate, {foreignKey: 'CorporateID'}); 
 
 module.exports = {
   Restaurant,
@@ -62,6 +68,7 @@ module.exports = {
   CorporateAdmin,
   MerchantTransactions,
   Corporate,
-  Rider
+  Rider,
+  CorporateRider
 
 };

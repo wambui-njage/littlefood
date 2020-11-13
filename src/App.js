@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link ,Redirect} from 'react-rou
 import Index from "views/pages/Index.js";
 import Login from "views/pages/LoginPage.js";
 import RestaurantPage from "views/pages/RestaurantPage.js";
+import StaffPage from "views/pages/StaffPage.js";
 import LoginPage from "views/pages/LoginPage.js";
 import GuardedRoute from "views/sections/global/GuardedRoute";
 
@@ -18,6 +19,11 @@ console.log(isAutheticated)
       <Route
         path="/restaurant/:id"
         render={(props) => <RestaurantPage {...props} />}
+      />
+
+      <Route
+        path="/staff"
+        render={(props) => <StaffPage {...props} />}
       />
 
 {/* <Route

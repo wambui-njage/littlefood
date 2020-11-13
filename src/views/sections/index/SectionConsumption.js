@@ -12,8 +12,9 @@ import useFetch from "../../../hooks/fetch";
 function SectionConsumption() {
 
   const [users,setUsers] = useState([])
+  const [loading,setLoading] = useState(true)
 
-  const { response , isLoading ,error} = useFetch({
+  const { response ,error} = useFetch({
     api: axios,
     method: "get",
     url: "/api/reports/users"
@@ -21,20 +22,22 @@ function SectionConsumption() {
 
  useEffect(() =>{
 
-  
+  setLoading(false)
   if (response) {
 
+      
       setUsers(response.slice(0, 5))
+      console.log(users)
 
-    }
+  }
 
 },[response])
 
 
   return (
     <>
-      { isLoading &&  <ConsumptionLoading/> }
-      {!error && users.length && (<div className="section">
+      { loading &&  <ConsumptionLoading/> }
+      {!loading && !error && users.length && (<div className="section">
         <Container>
           <div className="title">
             <h2 className="text-center">Comsuption Per User </h2>

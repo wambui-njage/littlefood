@@ -54,7 +54,7 @@ function SectionGraphs() {
         
         xaxis: {
           categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-          position: 'top',
+          position: 'bottom',
           axisBorder: {
             show: false
           },
@@ -109,17 +109,27 @@ function SectionGraphs() {
 
   
     if (response) {
-
-        newreport.map( (value,key) =>{
-
-          if(response.findIndex(x => x.TrxDate === key) >= 0){
-
-              newreport[key] = response[response.findIndex(x => x.TrxDate === key)].total
-
+        
+        newreport = newreport.map((el, key) => {
+          let value = response.find(em => em.TrxDate -1 === key);
+          if(value) {
+            return value.total
           }
+          return el;
+        });
+        
+      //   newreport.map( (value,key) =>{
+
+      //     if(response.findIndex(x => x.TrxDate === key) >= 0){
+
+      //         newreport[key] = response[response.findIndex(x => x.TrxDate === key)].total
+
+      //     }
+
+      //     console.log("REPOSRT", newreport)
 
       
-      })
+      // })
 
       setGraph({...graph, series : [
                 {

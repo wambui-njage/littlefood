@@ -3,9 +3,10 @@ module.exports = (sequelize, Sequelize) => {
       "Riders",
       {
 
-            MobileNumber : { type: Sequelize.STRING, primaryKey: true },
+            MobileNumber : { type: Sequelize.STRING, primaryKey: true , allowNull: false},
             EMailID : Sequelize.STRING,
-            FullName : Sequelize.STRING
+            FullName : Sequelize.STRING,
+            ProfilePicture : Sequelize.STRING,
         
       },
       { timestamps: false, defaultPrimaryKey: false, freezeTableName: true }

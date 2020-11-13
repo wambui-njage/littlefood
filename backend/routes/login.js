@@ -35,7 +35,7 @@ router.get('/', async function(req, res, next) {
      
     if (req.session) {
         // delete session object
-      sessionStorage.setItem('isAutheticated', false);
+      // sessionStorage.setItem('isAutheticated', false);
       req.session.destroy(function(err) {
         if(err) {
           return next(err);
