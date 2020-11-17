@@ -11,4 +11,20 @@ function sendData(url, FORMID) {
         )
 }
 
-module.exports = {sendData}
+
+function sendDataDecrypt(url, FORMID) {
+    return axios({
+        url: decrypt(url), 
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        data: `DATA=${encodeURIComponent(encrypt(FORMID))}`
+        }).then(response => decrypt(response.data)
+                  
+        )
+}
+
+module.exports = {
+    sendData,
+    sendDataDecrypt
+
+
+}
