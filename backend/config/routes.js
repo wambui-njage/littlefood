@@ -36,6 +36,8 @@ app.use(session({
 //   res.locals.roles = req.session.roles;
 //   next();
 // });
+
+
 app.use(cors());
 app.use("/api/restaurant",auth,restaurant);
 app.use("/api/reports",auth,reports);

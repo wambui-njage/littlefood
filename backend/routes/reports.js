@@ -123,13 +123,14 @@ router.post('/food', async function(req, res, next) {
 
       const str = `FORMID|LISTOOD|FROMDATE|${moment(from).format('YYYY-MM-DD')}|TODATE|${moment(to).format('YYYY-MM-DD')}|CORPORATEID|${corps[i]}|COUNTRY|KENYA`
       let jsonCustomers = await sendDataDecrypt(process.env.TESTURL, str)
-      if (jsonCustomers) customers.push( JSON.parse( jsonCustomers.substring(1, jsonCustomers.length-1) ) )
+      
+      if (jsonCustomers) customers.push( JSON.parse(`[ ${jsonCustomers.slice(jsonCustomers.indexOf("{"),jsonCustomers.lastIndexOf("}")+1) } ]`))
 
 
     }
 
-    
-
+      customers = [].concat(...customers)
+     
 
     // jsonCustomers = await MerchantTransactions.findAll({ 
     //     where: {
@@ -154,7 +155,7 @@ router.post('/food', async function(req, res, next) {
 
     //  WorkSheet Header
     worksheet.columns = [
-        { header: 'Trip ID', key: 'TripID', width: 30 },
+        { header: 'Trip ID', key: 'TransactionID', width: 30 },
         { header: 'Customer Name', key: 'OfficialName', width: 30 },
         { header: 'Customer Phone', key: 'MobileNumber', width: 30 },
         { header: 'Email Address', key: 'StaffEMail', width: 30 },

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Op } = require("sequelize");
-const { CorporateRider , Rider , Corporate } = require("../config/db");
+const { CorporateRider , Rider , Corporate ,CorporateWallet } = require("../config/db");
 
 
 router.get('/', async (req, res) => {
@@ -30,6 +30,17 @@ router.get('/', async (req, res) => {
             model: Corporate,
             required: true,
             attributes: ["Name"],
+            
+
+          },
+          {
+            model: CorporateWallet,
+            required: false,
+            where: {
+              CorporateID: { [Op.in]:  corps},
+              WalletType:'MERCHANT',
+              SubWalletType:'FOOD'
+            }
             
 
           }

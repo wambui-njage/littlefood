@@ -46,26 +46,6 @@ function SectionReport() {
         setError(err.response.statusText)
       })
 
-     /* axios({
-        url: '/api/reports/food', //your url
-        method: 'POST',
-        responseType: 'blob', // important
-        body: JSON.stringify(getValues()),
-        headers: { 'Content-Type': 'application/json' }
-      }).then((response) => {
-
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', 'report.xlsx'); //or any other extension
-        document.body.appendChild(link);
-        link.click();
-        setLoading(false)
-      })
-      .catch(err => {
-        setLoading(false)
-        setError(err.response.statusText)
-      }) */
   } 
 
   return (
@@ -127,7 +107,7 @@ function SectionReport() {
               <CardFooter>
               {errors.to && errors.to.type === "validate" && (
                   <div className="text-danger text-center font-weight-normal">
-                    TO DATE MUST GREATER THAN FROM DATE
+                    TO DATE MUST BE GREATER THAN FROM DATE
                   </div>
                 )}
 

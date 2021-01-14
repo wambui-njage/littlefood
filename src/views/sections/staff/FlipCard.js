@@ -33,6 +33,35 @@ const toggle = emp => {
 
 }
 
+const getLimit = staff =>{
+
+  const stafflimit = Object.keys(staff.CorporateWallet)
+  .filter(key => key.toString().includes("Limit"))
+  .reduce((obj, key) => {
+   if (staff.CorporateWallet[key] > 0)
+    return staff.CorporateWallet[key];
+  }, {});
+
+//  const stafflimit = staff.CorporateWalletfilter(obj => {
+
+               
+             
+//                         if(index.toString().includes("Limit") && value > 0){
+                                  
+//                                   return `${value} ${index}`
+//                           }
+
+                      
+                      
+                
+//                    })
+
+                   console.log(stafflimit)
+
+                  //  return stafflimit;
+
+}
+
 
 const onSubmit = (event) => {
 
@@ -77,7 +106,7 @@ const addDefaultSrc = (ev) => {
       ev.target.src = require("../../../assets/img/default-avatar.png")
     }
  
-    return ( <>
+return ( <>
 <div>
 
     <Modal
@@ -111,11 +140,12 @@ const addDefaultSrc = (ev) => {
 
           
             
-          <form onSubmit={e => e.preventDefault()}>
+          { !user.CorporateWallet && <form onSubmit={e => e.preventDefault()}>
           <FormGroup>
             <label>Limit Type</label>
              <Input type="select" name="limittype" id="exampleSelect1" required onChange={event => setLimitType(event.target.value)}>
               <option hidden ></option>
+              <option value="L">LOAD CASH</option>
               <option value="D">DAY</option>
               <option value="W">WEEK</option>
               <option value="M">MONTH</option>
@@ -129,7 +159,10 @@ const addDefaultSrc = (ev) => {
           <Button type="submit" block className="btn-round" onClick={onSubmit}  color="default">
             Set Limit
           </Button>
-          </form>
+          </form> }
+
+          
+
         </div>
       </LoadingOverlay>
       </Modal>
@@ -154,10 +187,13 @@ const addDefaultSrc = (ev) => {
                 <p>{employee.MobileNumber}</p>
                 <p>{employee.CompanyEmail.split(",")[0]}</p>
                 <p>{employee.Corporate.Name}</p>
-                <Button className="btn-round btn-warning" onClick={() => toggle(employee)}>
+                { !employee.CorporateWallet && <Button className="btn-round btn-warning" onClick={() => toggle(employee)}>
                   <i className="fa fa-unlock-alt" />
                     Activate
-                </Button>
+                </Button>}
+
+                { employee.CorporateWallet && <p>{getLimit(employee)}</p>}
+            
             </div>
         </div>
       </div>
